@@ -19,16 +19,11 @@ export default function Hero() {
     >
       <div aria-hidden="true" className="cosmic-scene absolute inset-0">
         <div className="absolute inset-0 cosmic-gradient" />
-        <div className="absolute inset-0 cosmic-stars" />
-        <div className="absolute inset-0 cosmic-stars cosmic-stars-alt" />
         <div className="cosmic-nebula cosmic-nebula-a" />
         <div className="cosmic-nebula cosmic-nebula-b" />
         <div className="cosmic-nebula cosmic-nebula-c" />
         <div className="cosmic-planet" />
         <div className="cosmic-orbit" />
-        <div className="cosmic-focus-star cosmic-focus-star-a" />
-        <div className="cosmic-focus-star cosmic-focus-star-b" />
-        <div className="cosmic-focus-star cosmic-focus-star-c" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#07111f]/28 via-transparent to-transparent" />
 

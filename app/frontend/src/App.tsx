@@ -7,6 +7,7 @@ import Index from './pages/Index';
 import AuthCallback from './pages/AuthCallback';
 import AuthError from './pages/AuthError';
 import Join from './pages/Join';
+import AdminCalendar from './pages/AdminCalendar';
 // MODULE_IMPORTS_START
 // MODULE_IMPORTS_END
 
@@ -23,6 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/join" element={<Join />} />
+            <Route path="/admin/calendar" element={<AdminCalendar />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
             <Route path="/auth/error" element={<AuthError />} />
             {/* MODULE_ROUTES_START */}

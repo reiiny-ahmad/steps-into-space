@@ -64,16 +64,11 @@ export default function Join() {
       <section className="relative overflow-hidden px-4 pb-12 pt-8 sm:px-6 lg:px-8">
         <div aria-hidden="true" className="cosmic-scene absolute inset-0">
           <div className="absolute inset-0 cosmic-gradient" />
-          <div className="absolute inset-0 cosmic-stars" />
-          <div className="absolute inset-0 cosmic-stars cosmic-stars-alt" />
           <div className="cosmic-nebula cosmic-nebula-a" />
           <div className="cosmic-nebula cosmic-nebula-b" />
           <div className="cosmic-nebula cosmic-nebula-c" />
           <div className="cosmic-planet cosmic-planet-join" />
           <div className="cosmic-orbit cosmic-orbit-join" />
-          <div className="cosmic-focus-star cosmic-focus-star-a" />
-          <div className="cosmic-focus-star cosmic-focus-star-b" />
-          <div className="cosmic-focus-star cosmic-focus-star-c" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(234,242,255,0.82)] dark:to-[rgba(12,24,48,0.82)]" />
 
@@ -103,8 +98,6 @@ export default function Join() {
           <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
             <div className="space-y-6">
               <div className="join-hero-panel relative overflow-hidden rounded-[2.25rem] p-8 sm:p-10 lg:p-12">
-                <div aria-hidden="true" className="absolute inset-0 join-panel-stars" />
-                <div aria-hidden="true" className="absolute inset-0 join-panel-stars join-panel-stars-alt" />
                 <div aria-hidden="true" className="join-panel-aurora join-panel-aurora-a" />
                 <div aria-hidden="true" className="join-panel-aurora join-panel-aurora-b" />
                 <div aria-hidden="true" className="join-panel-glow" />

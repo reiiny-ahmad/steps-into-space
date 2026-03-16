@@ -1,7 +1,12 @@
+import { useEffect, useState } from "react";
 import { CalendarDays, Clock, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { useSitePreferences } from "@/components/providers/SitePreferencesProvider";
+import {
+  CALENDAR_UPDATED_EVENT,
+  resolveCalendarDisplayEvents,
+} from "@/lib/calendar-events";
 
 const toneMap = {
   violet: "bg-[#8B5CF6]/15 text-[#7C3AED] dark:bg-[#8B5CF6]/20 dark:text-[#C4B5FD]",
@@ -11,7 +16,25 @@ const toneMap = {
 } as const;
 
 export default function Calendar() {
-  const { content } = useSitePreferences();
+  const { content, language } = useSitePreferences();
+  const [events, setEvents] = useState(() =>
+    resolveCalendarDisplayEvents(content.calendar.events, language)
+  );
+
+  useEffect(() => {
+    const refreshEvents = () => {
+      setEvents(resolveCalendarDisplayEvents(content.calendar.events, language));
+    };
+
+    refreshEvents();
+    window.addEventListener("storage", refreshEvents);
+    window.addEventListener(CALENDAR_UPDATED_EVENT, refreshEvents);
+
+    return () => {
+      window.removeEventListener("storage", refreshEvents);
+      window.removeEventListener(CALENDAR_UPDATED_EVENT, refreshEvents);
+    };
+  }, [content.calendar.events, language]);
 
   return (
     <section id="calendar" className="relative py-24 theme-section">
@@ -33,9 +56,9 @@ export default function Calendar() {
         </div>
 
         <div className="mx-auto grid max-w-4xl gap-4">
-          {content.calendar.events.map((event) => (
+          {events.map((event) => (
             <Card
-              key={`${event.date}-${event.title}`}
+              key={event.id}
               className="group theme-card transition-all duration-300 hover:-translate-y-0.5"
             >
               <CardContent className="p-0">
@@ -61,6 +84,9 @@ export default function Calendar() {
                         {event.category}
                       </Badge>
                     </div>
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] theme-text-soft">
+                      {event.dateLabel}
+                    </p>
                     <p className="mb-3 text-sm theme-text-muted">
                       {event.description}
                     </p>
